@@ -13,7 +13,7 @@ const Testimonial = () => {
       .catch((err) => console.log(err));
   }, []);
   return (
-    <div className="container">
+    <div className="container py-5">
       <SectionTitle
         heading={"TESTIMONIALS"}
         subHeading={"What Our Clients Say"}
