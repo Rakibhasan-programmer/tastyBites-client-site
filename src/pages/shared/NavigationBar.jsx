@@ -5,7 +5,7 @@ const NavigationBar = () => {
   useEffect(() => {
     window.addEventListener("scroll", function () {
       const nav = document.querySelector("nav");
-      if (window.scrollY > 220) {
+      if (window.scrollY > 850) {
         nav.classList.remove("bg-transparent");
         nav.classList.add("bg-dark");
       } else {
