@@ -24,7 +24,7 @@ const Footer = () => {
                   Middle Badda, Dhaka 1212, Bangladesh
                 </span>
                 <span className="d-block">Phone: +098988998 98</span>
-                <span className="d-block">Email: info@toytopia.com</span>
+                <span className="d-block">Email: info@tastyBites.com</span>
               </p>
             </div>
             <div className="col-md-6 col-lg-2">
@@ -113,13 +113,16 @@ const Footer = () => {
             </Link>
           </p>
           <p className="fs-4">
-            <Link className="text-white" to={"https://web.facebook.com/?_rdc=1&_rdr"}>
+            <Link
+              className="text-white"
+              to={"https://web.facebook.com/?_rdc=1&_rdr"}
+            >
               <FaFacebook />
             </Link>
           </p>
         </div>
         <p className="text-center fw-light pt-4">
-          All rights reserved | &copy; 2023 toytopia
+          All rights reserved | &copy; 2023 tastyBites
         </p>
       </footer>
     </>
