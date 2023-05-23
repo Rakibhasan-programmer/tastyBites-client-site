@@ -1,12 +1,16 @@
 import React from "react";
 import NavigationBar from "../pages/shared/NavigationBar";
 import { Outlet } from "react-router-dom";
+import Footer from "../pages/shared/Footer";
 
 const Main = () => {
   return (
     <>
       <NavigationBar />
-      <Outlet />
+      <div style={{ minHeight: "40vh" }}>
+        <Outlet />
+      </div>
+      <Footer />
     </>
   );
 };
