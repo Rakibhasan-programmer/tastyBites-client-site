@@ -14,7 +14,7 @@ const MenuItems = ({ item }) => {
           />
         </div>
         <div className="px-3">
-          <h5>{name}</h5>
+          <h5 className="text-uppercase">{name}</h5>
           <p className="fw-light">{recipe}</p>
         </div>
         <p className="text-warning">${price}</p>

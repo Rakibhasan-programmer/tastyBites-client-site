@@ -5,8 +5,6 @@ import slide3 from "../../assets/home/slide3.jpg";
 import slide4 from "../../assets/home/slide4.jpg";
 import slide5 from "../../assets/home/slide5.jpg";
 import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-import "swiper/css/pagination";
 import { Pagination } from "swiper";
 import SectionTitle from "../../Components/SectionTitle";
 
@@ -26,22 +24,22 @@ const Category = () => {
         modules={[Pagination]}
         className="mySwiper"
       >
-        <SwiperSlide>
+        <SwiperSlide className="pb-5">
           <img className="img-fluid" src={slide1} alt="" />
         </SwiperSlide>
-        <SwiperSlide>
+        <SwiperSlide className="pb-5">
           <img className="img-fluid" src={slide2} alt="" />
         </SwiperSlide>
-        <SwiperSlide>
+        <SwiperSlide className="pb-5">
           <img className="img-fluid" src={slide3} alt="" />
         </SwiperSlide>
-        <SwiperSlide>
+        <SwiperSlide className="pb-5">
           <img className="img-fluid" src={slide4} alt="" />
         </SwiperSlide>
-        <SwiperSlide>
+        <SwiperSlide className="pb-5">
           <img className="img-fluid" src={slide5} alt="" />
         </SwiperSlide>
-        <SwiperSlide>
+        <SwiperSlide className="pb-5">
           <img className="img-fluid" src={slide2} alt="" />
         </SwiperSlide>
       </Swiper>
