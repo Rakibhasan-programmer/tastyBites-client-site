@@ -1,15 +1,13 @@
 import React from "react";
 import SectionTitle from "../../Components/SectionTitle";
-import MenuItems from "../shared/MenuItems";
-import { Button } from "react-bootstrap";
 import useMenu from "../../hooks/useMenu";
 
-const Menu = () => {
-  const [menu] = useMenu();
-  const popular = menu.filter((item) => item.category === "popular");
+const PopularMenu = () => {
+    const [menu] = useMenu();
+    const popular = menu.filter(item => item.category === 'popular');
   return (
-    <>
-      <div className="container py-5">
+    <div>
+      {/* <div className="container py-5">
         <SectionTitle heading={"FROM OUR MENU"} subHeading={"Check it out"} />
         <div className="row g-4 d-flex justify-content-center align-items-center">
           {popular.map((item) => (
@@ -21,9 +19,9 @@ const Menu = () => {
             View Full Menu
           </Button>
         </div>
-      </div>
-    </>
+      </div> */}
+    </div>
   );
 };
 
-export default Menu;
+export default PopularMenu;

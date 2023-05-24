@@ -1,7 +1,15 @@
 ul.thumbs.animated {
-    text-align: center;
+  text-align: center;
 }
-.section-border{
-    border-top: 4px solid rgb(184, 180, 180);
-    border-bottom: 4px solid rgb(183, 179, 179);
+.section-border {
+  border-top: 4px solid rgb(184, 180, 180);
+  border-bottom: 4px solid rgb(183, 179, 179);
+}
+.cover-bg {
+  background-image: url("./assets/menu/banner3.jpg"),
+    linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.7));
+  background-blend-mode: multiply;
+  height: 50vh;
+  background-repeat: no-repeat;
+  background-size: cover;
 }

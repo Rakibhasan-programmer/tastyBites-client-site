@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { Button, Container, Form, Nav, Navbar } from "react-bootstrap";
+import { NavLink } from "react-router-dom";
 
 const NavigationBar = () => {
   useEffect(() => {
@@ -29,21 +30,21 @@ const NavigationBar = () => {
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">
             <Nav className="mx-auto my-2 my-lg-0" navbarScroll>
-              <Nav.Link href="#action1" className="text-white px-3">
+              <NavLink to={"/"} className="text-white px-3 nav-link">
                 Home
-              </Nav.Link>
-              <Nav.Link href="#action2" className="text-white px-3">
-                Contact us
-              </Nav.Link>
-              <Nav.Link href="#action2" className="text-white px-3">
-                Dashboard
-              </Nav.Link>
-              <Nav.Link href="#action2" className="text-white px-3">
+              </NavLink>
+              <NavLink to={"/menu"} className="text-white px-3 nav-link">
                 Our Menu
-              </Nav.Link>
-              <Nav.Link href="#action2" className="text-white px-3">
+              </NavLink>
+              <NavLink to={"/contact"} className="text-white px-3 nav-link">
+                Contact US
+              </NavLink>
+              <NavLink to={"/dashboard"} className="text-white px-3 nav-link">
+                Dashboard
+              </NavLink>
+              <NavLink to={"/shop"} className="text-white px-3 nav-link">
                 Our Shop
-              </Nav.Link>
+              </NavLink>
             </Nav>
             <Form className="d-flex">
               <Form.Control
