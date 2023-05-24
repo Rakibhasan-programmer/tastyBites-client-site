@@ -1,16 +1,15 @@
 import React from "react";
 import SectionTitle from "../../Components/SectionTitle";
-import useMenu from "../../hooks/useMenu";
+import MenuItems from "../shared/MenuItems";
+import { Button } from "react-bootstrap";
 
-const PopularMenu = () => {
-    const [menu] = useMenu();
-    const popular = menu.filter(item => item.category === 'popular');
+const PopularMenu = ({ items, heading, subHeading }) => {
   return (
     <div>
-      {/* <div className="container py-5">
-        <SectionTitle heading={"FROM OUR MENU"} subHeading={"Check it out"} />
+      <div className="container py-5">
+        <SectionTitle heading={heading} subHeading={subHeading} />
         <div className="row g-4 d-flex justify-content-center align-items-center">
-          {popular.map((item) => (
+          {items.map((item) => (
             <MenuItems key={item._id} item={item} />
           ))}
         </div>
@@ -19,7 +18,7 @@ const PopularMenu = () => {
             View Full Menu
           </Button>
         </div>
-      </div> */}
+      </div>
     </div>
   );
 };
