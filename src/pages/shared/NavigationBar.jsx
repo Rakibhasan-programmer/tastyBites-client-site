@@ -42,7 +42,7 @@ const NavigationBar = () => {
               <NavLink to={"/dashboard"} className="text-white px-3 nav-link">
                 Dashboard
               </NavLink>
-              <NavLink to={"/order"} className="text-white px-3 nav-link">
+              <NavLink to={"/order/salad"} className="text-white px-3 nav-link">
                 Order
               </NavLink>
             </Nav>
