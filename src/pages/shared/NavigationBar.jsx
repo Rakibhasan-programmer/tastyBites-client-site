@@ -6,7 +6,7 @@ const NavigationBar = () => {
   useEffect(() => {
     window.addEventListener("scroll", function () {
       const nav = document.querySelector("nav");
-      if (window.scrollY > 850) {
+      if (window.scrollY > 250) {
         nav.classList.remove("bg-transparent");
         nav.classList.add("bg-dark");
       } else {
@@ -42,8 +42,8 @@ const NavigationBar = () => {
               <NavLink to={"/dashboard"} className="text-white px-3 nav-link">
                 Dashboard
               </NavLink>
-              <NavLink to={"/shop"} className="text-white px-3 nav-link">
-                Our Shop
+              <NavLink to={"/order"} className="text-white px-3 nav-link">
+                Order
               </NavLink>
             </Nav>
             <Form className="d-flex">

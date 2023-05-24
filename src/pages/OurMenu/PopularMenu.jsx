@@ -2,8 +2,9 @@ import React from "react";
 import SectionTitle from "../../Components/SectionTitle";
 import MenuItems from "../shared/MenuItems";
 import { Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
-const PopularMenu = ({ items, heading, subHeading }) => {
+const PopularMenu = ({ items, heading, subHeading, title }) => {
   return (
     <div>
       <div className="container py-5">
@@ -14,9 +15,11 @@ const PopularMenu = ({ items, heading, subHeading }) => {
           ))}
         </div>
         <div className="text-center py-3">
-          <Button className="rounded-0" variant="dark">
-            View Full Menu
-          </Button>
+          <Link to={`/order/${title}`}>
+            <Button className="rounded-0" variant="dark">
+              Order Now
+            </Button>
+          </Link>
         </div>
       </div>
     </div>
