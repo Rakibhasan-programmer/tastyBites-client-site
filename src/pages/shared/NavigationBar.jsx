@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Button, Container, Form, Nav, Navbar } from "react-bootstrap";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 const NavigationBar = () => {
   useEffect(() => {
@@ -24,9 +24,11 @@ const NavigationBar = () => {
         expand="lg"
       >
         <Container>
-          <Navbar.Brand href="#" className="fw-bold fs-3">
-            TastyBites
-          </Navbar.Brand>
+          <Link to={"/"} className="text-decoration-none">
+            <Navbar.Brand href="#" className="fw-bold fs-3">
+              TastyBites
+            </Navbar.Brand>
+          </Link>
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">
             <Nav className="mx-auto my-2 my-lg-0" navbarScroll>
@@ -46,15 +48,9 @@ const NavigationBar = () => {
                 Order
               </NavLink>
             </Nav>
-            <Form className="d-flex">
-              <Form.Control
-                type="search"
-                placeholder="Search"
-                className="me-2"
-                aria-label="Search"
-              />
-              <Button variant="outline-success">Search</Button>
-            </Form>
+            <div className="d-flex">
+              <Button variant="primary">Login</Button>
+            </div>
           </Navbar.Collapse>
         </Container>
       </Navbar>
