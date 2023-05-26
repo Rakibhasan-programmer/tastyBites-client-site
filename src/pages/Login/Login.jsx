@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import loginImg from "../../assets/others/authentication2.png";
 import { Button, Form } from "react-bootstrap";
 import {
@@ -7,18 +7,32 @@ import {
   validateCaptcha,
 } from "react-simple-captcha";
 import { FaGithub, FaGoogle } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import { AuthContext } from "../../providers/AuthProvider";
 
 const Login = () => {
+  const navigate = useNavigate();
   const [disable, setDisable] = useState(true);
+  const { userLogin } = useContext(AuthContext);
   const {
     register,
     handleSubmit,
     watch,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data) => console.log(data);
+  // user login
+  const onSubmit = (data) => {
+    userLogin(data.email, data.password)
+      .then((res) => {
+        const loggedUser = res.user;
+        // navigate to home
+        navigate("/");
+      })
+      .catch((err) => console.log(err));
+  };
+
+  // recaptcha
   useEffect(() => {
     loadCaptchaEnginge(6);
   }, []);

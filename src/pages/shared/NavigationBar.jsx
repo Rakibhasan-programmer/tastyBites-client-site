@@ -1,8 +1,18 @@
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import { Button, Container, Nav, Navbar } from "react-bootstrap";
 import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../../providers/AuthProvider";
 
 const NavigationBar = () => {
+  const { user, logOut } = useContext(AuthContext);
+
+  // sign out
+  const handleSignOut = () => {
+    logOut()
+    .then(() => {})
+    .catch(err => console.log(err));
+  };
+  // scroll spy
   useEffect(() => {
     window.addEventListener("scroll", function () {
       const nav = document.querySelector("nav");
@@ -81,7 +91,15 @@ const NavigationBar = () => {
               </NavLink>
             </Nav>
             <div className="d-flex">
-              <Link to={"/login"} className="btn btn-primary px-3">Login</Link>
+              {user && user?.displayName ? (
+                <Button className="px-3" variant="danger" onClick={handleSignOut}>
+                  SignOut
+                </Button>
+              ) : (
+                <Link to={"/login"} className="btn btn-primary px-3">
+                  Login
+                </Link>
+              )}
             </div>
           </Navbar.Collapse>
         </Container>
