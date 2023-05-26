@@ -1,20 +1,25 @@
 import React, { useContext, useEffect, useState } from "react";
 import loginImg from "../../assets/others/authentication2.png";
 import { Button, Form } from "react-bootstrap";
+import swal from "sweetalert";
 import {
   loadCaptchaEnginge,
   LoadCanvasTemplate,
   validateCaptcha,
 } from "react-simple-captcha";
 import { FaGithub, FaGoogle } from "react-icons/fa";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../../providers/AuthProvider";
+import { GoogleAuthProvider } from "firebase/auth";
 
 const Login = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+  // redirect location
+  const redirectLocation = location?.state?.from?.pathname || "/";
   const [disable, setDisable] = useState(true);
-  const { userLogin } = useContext(AuthContext);
+  const { userLogin, googleSignIn } = useContext(AuthContext);
   const {
     register,
     handleSubmit,
@@ -22,12 +27,40 @@ const Login = () => {
     formState: { errors },
   } = useForm();
   // user login
-  const onSubmit = (data) => {
+  const onSubmit = (data, e) => {
     userLogin(data.email, data.password)
       .then((res) => {
         const loggedUser = res.user;
+        // login success alert
+        swal({
+          title: "Good job!",
+          text: "Login Successfull!",
+          icon: "success",
+          button: "Ok",
+        });
         // navigate to home
-        navigate("/");
+        navigate(redirectLocation, { replace: true });
+      })
+      .catch((err) => console.log(err));
+    // reseting form values
+    e.target.reset();
+  };
+
+  // google sign in
+  const provider = new GoogleAuthProvider();
+  const handleGoogleSignIn = () => {
+    googleSignIn(provider)
+      .then((res) => {
+        const goggleUser = res.user;
+        // login success alert
+        swal({
+          title: "Good job!",
+          text: "Login Successfull!",
+          icon: "success",
+          button: "Ok",
+        });
+        // navigate to home
+        navigate(redirectLocation, { replace: true });
       })
       .catch((err) => console.log(err));
   };
@@ -117,7 +150,7 @@ const Login = () => {
                 </Link>
                 <p className="pt-2">or sign in with</p>
                 <div>
-                  <Link className="pe-3 fs-4">
+                  <Link className="pe-3 fs-4" onClick={handleGoogleSignIn}>
                     <FaGoogle />
                   </Link>
                   <Link className="fs-4">

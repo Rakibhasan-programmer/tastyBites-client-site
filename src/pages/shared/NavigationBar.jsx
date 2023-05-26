@@ -9,8 +9,8 @@ const NavigationBar = () => {
   // sign out
   const handleSignOut = () => {
     logOut()
-    .then(() => {})
-    .catch(err => console.log(err));
+      .then(() => {})
+      .catch((err) => console.log(err));
   };
   // scroll spy
   useEffect(() => {
@@ -91,8 +91,17 @@ const NavigationBar = () => {
               </NavLink>
             </Nav>
             <div className="d-flex">
+              {user && (
+                <Button className="px-3 me-2 btn-primary">
+                  {user?.displayName}
+                </Button>
+              )}
               {user && user?.displayName ? (
-                <Button className="px-3" variant="danger" onClick={handleSignOut}>
+                <Button
+                  className="px-3"
+                  variant="danger"
+                  onClick={handleSignOut}
+                >
                   SignOut
                 </Button>
               ) : (
