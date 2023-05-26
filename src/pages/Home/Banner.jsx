@@ -14,10 +14,10 @@ const Banner = () => {
       <div>
         <Carousel>
           <div>
-            <img className="img-fluid" src={img1} />
+            <img className="img-fluid" src={img2} />
           </div>
           <div>
-            <img className="img-fluid" src={img2} />
+            <img className="img-fluid" src={img1} />
           </div>
           <div>
             <img className="img-fluid" src={img3} />

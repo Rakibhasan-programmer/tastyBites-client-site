@@ -16,7 +16,7 @@ const PopularMenu = ({ items, heading, subHeading, title }) => {
         </div>
         <div className="text-center py-3">
           <Link to={`/order/${title}`}>
-            <Button className="rounded-0" variant="dark">
+            <Button className="rounded-0 btn btn-primary" variant="">
               Order Now
             </Button>
           </Link>

@@ -17,7 +17,7 @@ const Menu = () => {
           ))}
         </div>
         <div className="text-center py-3">
-          <Button className="rounded-0" variant="dark">
+          <Button className="rounded-0 btn-primary text-white" variant="">
             View Full Menu
           </Button>
         </div>

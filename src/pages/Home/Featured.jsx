@@ -21,7 +21,7 @@ const Featured = () => {
               Eaque repellat recusandae ad laudantium tempore consequatur
               consequuntur omnis ullam maxime tenetur.
             </p>
-            <Button className="rounded-0" variant="dark">Read More</Button>
+            <Button className="rounded-0 btn-primary" variant="">Read More</Button>
           </div>
         </div>
       </div>

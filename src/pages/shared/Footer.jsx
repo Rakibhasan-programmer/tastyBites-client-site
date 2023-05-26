@@ -1,5 +1,5 @@
 import React from "react";
-import { FaEnvelope, FaFacebook, FaGithub } from "react-icons/fa";
+import { FaFacebook, FaGithub, FaInstagram } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 const Footer = () => {
@@ -90,7 +90,7 @@ const Footer = () => {
                   aria-describedby="button-addon2"
                 />
                 <button
-                  className="btn btn-primary text-white"
+                  className="btn btn-primary fw-semibold"
                   type="button"
                   id="button-addon2"
                 >
@@ -103,8 +103,8 @@ const Footer = () => {
         <hr />
         <div className="container d-flex justify-content-end">
           <p className="fs-4">
-            <Link className="text-white" to={"https://mail.google.com/"}>
-              <FaEnvelope />
+            <Link className="text-white" to={"https://instagram.com/"}>
+              <FaInstagram />
             </Link>
           </p>
           <p className="px-3 fs-4">

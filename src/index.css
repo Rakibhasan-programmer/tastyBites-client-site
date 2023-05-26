@@ -1,15 +1,37 @@
 ul.thumbs.animated {
   text-align: center;
 }
+@media only screen and (min-width: 992px) {
+  .slider {
+    height: 100vh;
+  }
+}
 .section-border {
-  border-top: 4px solid rgb(184, 180, 180);
-  border-bottom: 4px solid rgb(183, 179, 179);
+  border-top: 4px solid #e8e8e8;
+  border-bottom: 4px solid #e8e8e8;
 }
 .cover-bg {
   background-image: url("./assets/menu/banner3.jpg"),
     linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.7));
   background-blend-mode: multiply;
-  height: 50vh;
+  min-height: 50vh;
   background-repeat: no-repeat;
   background-size: cover;
+}
+.active {
+  color: #ffa300 !important;
+  font-weight: bold !important;
+}
+.d-text{
+  color: #ffa300 !important;
+}
+.btn-primary {
+  background-color: #ffa300 !important;
+  border: 1px solid #ffa300 !important;
+  font-weight: 600 !important;
+  color: black !important;
+}
+.bg-login{
+  background-image: url('./assets/others/authentication.png');
+  min-height: 100vh;
 }

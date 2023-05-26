@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Button, Container, Form, Nav, Navbar } from "react-bootstrap";
+import { Button, Container, Nav, Navbar } from "react-bootstrap";
 import { Link, NavLink } from "react-router-dom";
 
 const NavigationBar = () => {
@@ -18,38 +18,70 @@ const NavigationBar = () => {
 
   return (
     <>
-      <Navbar
-        className="navbar-dark py-3 fixed-top bg-transparent"
-        bg="dark"
-        expand="lg"
-      >
+      <Navbar className="py-3 fixed-top bg-transparent" expand="lg">
         <Container>
-          <Link to={"/"} className="text-decoration-none">
-            <Navbar.Brand href="#" className="fw-bold fs-3">
-              TastyBites
-            </Navbar.Brand>
+          <Link
+            to={"/"}
+            className="fw-bold fs-3 text-white text-decoration-none"
+          >
+            TastyBites
           </Link>
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">
             <Nav className="mx-auto my-2 my-lg-0" navbarScroll>
-              <NavLink to={"/"} className="text-white px-3 nav-link">
+              <NavLink
+                to={"/"}
+                className={({ isActive }) =>
+                  isActive
+                    ? "active nav-link fw-bold px-3"
+                    : "nav-link text-white px-3"
+                }
+              >
                 Home
               </NavLink>
-              <NavLink to={"/menu"} className="text-white px-3 nav-link">
+              <NavLink
+                to={"/menu"}
+                className={({ isActive }) =>
+                  isActive
+                    ? "active nav-link fw-bold px-3"
+                    : "nav-link text-white px-3"
+                }
+              >
                 Our Menu
               </NavLink>
-              <NavLink to={"/contact"} className="text-white px-3 nav-link">
+              <NavLink
+                to={"/contact"}
+                className={({ isActive }) =>
+                  isActive
+                    ? "active nav-link fw-bold px-3"
+                    : "nav-link text-white px-3"
+                }
+              >
                 Contact US
               </NavLink>
-              <NavLink to={"/dashboard"} className="text-white px-3 nav-link">
+              <NavLink
+                to={"/dashboard"}
+                className={({ isActive }) =>
+                  isActive
+                    ? "active nav-link fw-bold px-3"
+                    : "nav-link text-white px-3"
+                }
+              >
                 Dashboard
               </NavLink>
-              <NavLink to={"/order/salad"} className="text-white px-3 nav-link">
+              <NavLink
+                to={"/order/salad"}
+                className={({ isActive }) =>
+                  isActive
+                    ? "active nav-link fw-bold px-3"
+                    : "nav-link text-white px-3"
+                }
+              >
                 Order
               </NavLink>
             </Nav>
             <div className="d-flex">
-              <Button variant="primary">Login</Button>
+              <Link to={"/login"} className="btn btn-primary px-3">Login</Link>
             </div>
           </Navbar.Collapse>
         </Container>
