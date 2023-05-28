@@ -1,7 +1,8 @@
 import React, { useContext, useEffect } from "react";
-import { Button, Container, Nav, Navbar } from "react-bootstrap";
+import { Badge, Button, Container, Nav, Navbar } from "react-bootstrap";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
+import { FaShoppingCart } from "react-icons/fa";
 
 const NavigationBar = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -18,17 +19,15 @@ const NavigationBar = () => {
       const nav = document.querySelector("nav");
       if (window.scrollY > 250) {
         nav.classList.remove("bg-transparent");
-        nav.classList.add("bg-dark");
       } else {
         nav.classList.add("bg-transparent");
-        nav.classList.remove("bg-dark");
       }
     });
   }, []);
 
   return (
     <>
-      <Navbar className="py-3 fixed-top bg-transparent" expand="lg">
+      <Navbar className="py-3 fixed-top bg-dark" expand="lg">
         <Container>
           <Link
             to={"/"}
@@ -88,6 +87,11 @@ const NavigationBar = () => {
                 }
               >
                 Order
+              </NavLink>
+              <NavLink to={"/"} className="nav-link text-white px-3">
+                <p>
+                  <FaShoppingCart /> <Badge bg="secondary">0</Badge>
+                </p>
               </NavLink>
             </Nav>
             <div className="d-flex">
