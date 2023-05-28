@@ -3,9 +3,11 @@ import { Badge, Button, Container, Nav, Navbar } from "react-bootstrap";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 import { FaShoppingCart } from "react-icons/fa";
+import useCart from "../../hooks/useCart";
 
 const NavigationBar = () => {
   const { user, logOut } = useContext(AuthContext);
+  const [cart] = useCart();
 
   // sign out
   const handleSignOut = () => {
@@ -90,7 +92,8 @@ const NavigationBar = () => {
               </NavLink>
               <NavLink to={"/"} className="nav-link text-white px-3">
                 <p>
-                  <FaShoppingCart /> <Badge bg="secondary">0</Badge>
+                  <FaShoppingCart />{" "}
+                  <Badge bg="secondary">{cart?.length || 0}</Badge>
                 </p>
               </NavLink>
             </Nav>

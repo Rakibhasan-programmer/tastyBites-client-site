@@ -3,10 +3,12 @@ import { Button, Card } from "react-bootstrap";
 import { AuthContext } from "../providers/AuthProvider";
 import { useLocation, useNavigate } from "react-router-dom";
 import swal from "sweetalert";
+import useCart from "../hooks/useCart";
 
 const FoodCard = ({ item }) => {
   const { name, image, price, recipe, _id } = item;
   const { user } = useContext(AuthContext);
+  const [cart, refetch] = useCart();
   const navigate = useNavigate();
   const location = useLocation();
   // handle cart
@@ -30,6 +32,7 @@ const FoodCard = ({ item }) => {
         .then((res) => res.json())
         .then((data) => {
           if (data.insertedId) {
+            refetch(); // updating the order number
             swal({
               title: "Good job!",
               text: "Order added to the cart Successfully",
