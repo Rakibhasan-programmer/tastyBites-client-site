@@ -16,16 +16,16 @@ const NavigationBar = () => {
       .catch((err) => console.log(err));
   };
   // scroll spy
-  useEffect(() => {
-    window.addEventListener("scroll", function () {
-      const nav = document.querySelector("nav");
-      if (window.scrollY > 250) {
-        nav.classList.remove("bg-transparent");
-      } else {
-        nav.classList.add("bg-transparent");
-      }
-    });
-  }, []);
+  // useEffect(() => {
+  //   window.addEventListener("scroll", function () {
+  //     const nav = document.querySelector("nav");
+  //     if (window.scrollY > 250) {
+  //       nav.classList.remove("bg-transparent");
+  //     } else {
+  //       nav.classList.add("bg-transparent");
+  //     }
+  //   });
+  // }, []);
 
   return (
     <>
@@ -90,7 +90,7 @@ const NavigationBar = () => {
               >
                 Order
               </NavLink>
-              <NavLink to={"/"} className="nav-link text-white px-3">
+              <NavLink to={"/dashboard/mycart"} className="nav-link text-white px-3">
                 <p>
                   <FaShoppingCart />{" "}
                   <Badge bg="secondary">{cart?.length || 0}</Badge>

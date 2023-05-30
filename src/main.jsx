@@ -10,6 +10,9 @@ import "@smastrom/react-rating/style.css";
 import "react-tabs/style/react-tabs.css";
 import AuthProvider from "./providers/AuthProvider";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import "../src/css/styles.css";
+import "../src/js/datatables-simple-demo";
+import "../src/js/scripts";
 
 const queryClient = new QueryClient();
 

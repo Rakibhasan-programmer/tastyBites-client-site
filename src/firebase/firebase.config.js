@@ -10,7 +10,7 @@ const firebaseConfig = {
   projectId: "tastybites-644a7",
   storageBucket: "tastybites-644a7.appspot.com",
   messagingSenderId: "666289040662",
-  appId: "1:666289040662:web:8e8cff5f39adc96996b437",
+  appId: "1:666289040662:web:8e8cff5f39adc96996b437"
 };
 
 // Initialize Firebase

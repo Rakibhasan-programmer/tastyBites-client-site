@@ -5,7 +5,7 @@ import { Link, NavLink, Outlet } from "react-router-dom";
 const Dashboard = () => {
   return (
     <div>
-      <Navbar bg="light" expand="lg">
+      <Navbar bg="light" expand="lg" className="shadow">
         <Container>
           <NavLink to={"/"} className="nav-link fs-2 fw-semibold">
             TastyBites
@@ -32,21 +32,25 @@ const Dashboard = () => {
           </Navbar.Collapse>
         </Container>
       </Navbar>
-      <div className="container-fluid px-5">
-        <div className="row py-5">
-          <div className="col-md-3">
-            <Link to={"/dashboard"} className="fs-5 d-block py-2 nav-link">
-              Dashboard
-            </Link>
-            <Link
-              to={"/dashboard/mycart"}
-              className="fs-5 d-block py-2 nav-link"
-            >
-              My Cart
-            </Link>
+      <div className="container-fluid">
+        <div className="row">
+          <div className="col-md-3 bg-light" style={{ minHeight: "100vh" }}>
+            <div className="p-5">
+              <Link to={"/dashboard"} className="fs-5 d-block py-2 nav-link">
+                Dashboard
+              </Link>
+              <Link
+                to={"/dashboard/mycart"}
+                className="fs-5 d-block py-2 nav-link"
+              >
+                My Cart
+              </Link>
+            </div>
           </div>
           <div className="col-md-9 pt-2">
-            <Outlet />
+            <div className="p-5">
+              <Outlet />
+            </div>
           </div>
         </div>
       </div>
