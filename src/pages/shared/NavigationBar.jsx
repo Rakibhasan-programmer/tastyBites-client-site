@@ -71,7 +71,7 @@ const NavigationBar = () => {
                 Contact US
               </NavLink>
               <NavLink
-                to={"/dashboard"}
+                to={"dashboard"}
                 className={({ isActive }) =>
                   isActive
                     ? "active nav-link fw-bold px-3"
