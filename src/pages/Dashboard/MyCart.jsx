@@ -28,7 +28,6 @@ const MyCart = () => {
   };
   return (
     <div>
-      <h3>Total Order: {cart?.length}</h3>
       <Table striped bordered hover size="sm" className="mt-3">
         <thead>
           <tr>
@@ -36,6 +35,7 @@ const MyCart = () => {
             <th>First Name</th>
             <th>Last Name</th>
             <th>Username</th>
+            <th>Action</th>
           </tr>
         </thead>
         <tbody>
