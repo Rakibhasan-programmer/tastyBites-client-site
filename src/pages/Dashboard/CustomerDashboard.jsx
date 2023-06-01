@@ -103,7 +103,7 @@ const CustomerDashboard = () => {
             </div>
             <div className="sb-sidenav-footer">
               <div className="small">Logged in as:</div>
-              {"Md Rakibul Hasan"}
+              {user?.displayName}
             </div>
           </nav>
         </div>

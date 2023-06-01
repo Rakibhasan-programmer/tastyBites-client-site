@@ -90,19 +90,30 @@ const NavigationBar = () => {
               >
                 Order
               </NavLink>
-              <NavLink to={"/dashboard/mycart"} className="nav-link text-white px-3">
+              <NavLink
+                to={"/dashboard/mycart"}
+                className="nav-link text-white px-3"
+              >
                 <p>
                   <FaShoppingCart />{" "}
-                  <Badge bg="secondary">{cart?.length || 0}</Badge>
+                  <Badge bg="warning">+{cart?.length || 0}</Badge>
                 </p>
               </NavLink>
             </Nav>
             <div className="d-flex">
-              {user && (
-                <Button className="px-3 me-2 btn-primary">
-                  {user?.displayName}
-                </Button>
-              )}
+              {user &&
+                (user?.photoURL ? (
+                  <img
+                    className="rounded-circle me-2"
+                    src={user?.photoURL}
+                    style={{ height: "2.3rem" }}
+                    alt=""
+                  />
+                ) : (
+                  <Button className="px-3 me-2 btn-primary">
+                    {user?.displayName}
+                  </Button>
+                ))}
               {user && user?.displayName ? (
                 <Button
                   className="px-3"

@@ -3,6 +3,7 @@ import SectionTitle from "../../Components/SectionTitle";
 import MenuItems from "../shared/MenuItems";
 import { Button } from "react-bootstrap";
 import useMenu from "../../hooks/useMenu";
+import { Link } from "react-router-dom/dist";
 
 const Menu = () => {
   const [menu] = useMenu();
@@ -17,9 +18,11 @@ const Menu = () => {
           ))}
         </div>
         <div className="text-center py-3">
-          <Button className="rounded-0 btn-primary text-white" variant="">
-            View Full Menu
-          </Button>
+          <Link to={"/menu"}>
+            <Button className="rounded-0 btn-primary text-white" variant="">
+              View Full Menu
+            </Button>
+          </Link>
         </div>
       </div>
     </>
