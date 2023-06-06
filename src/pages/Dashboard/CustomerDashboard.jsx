@@ -1,7 +1,8 @@
 import React, { useContext } from "react";
-import { Link, Outlet } from "react-router-dom";
+import { Link, NavLink, Outlet } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 import useCart from "../../hooks/useCart";
+import { FaHome, FaShoppingCart } from "react-icons/fa";
 
 const CustomerDashboard = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -14,7 +15,7 @@ const CustomerDashboard = () => {
     <div>
       <nav className="sb-topnav navbar navbar-expand navbar-dark bg-dark">
         {/* <!-- Navbar Brand--> */}
-        <Link className="navbar-brand ps-3" to={"/"}>
+        <Link className="navbar-brand ps-3 fs-3 fw-semibold" to={"/"}>
           TastyBites
         </Link>
         {/* <!-- Sidebar Toggle--> */}
@@ -58,7 +59,7 @@ const CustomerDashboard = () => {
               <img
                 className="img-fluid rounded-circle"
                 src={user?.photoURL}
-                style={{ height: "2rem" }}
+                style={{ height: "2rem", width: "2rem", objectFit: "cover" }}
                 alt=""
               />
             </a>
@@ -83,22 +84,33 @@ const CustomerDashboard = () => {
           >
             <div className="sb-sidenav-menu">
               <div className="nav">
-                <Link className="nav-link" to={"/dashboard"}>
+                <NavLink
+                  to={"/dashboard"}
+                  className={({ isActive }) =>
+                    isActive
+                      ? "active nav-link fw-bold px-3"
+                      : "nav-link text-white px-3"
+                  }
+                >
                   <div className="sb-nav-link-icon">
-                    <i className="fas fa-tachometer-alt"></i>
+                    <FaHome />
                   </div>
                   Dashboard
-                </Link>
+                </NavLink>
                 <div className="sb-sidenav-menu-heading">Options</div>
-                <Link to={"/dashboard/mycart"} className="nav-link collapsed">
-                  <div className="sb-nav-link-icon">
-                    <i className="fas fa-columns"></i>
+                <NavLink
+                  to={"/dashboard/mycart"}
+                  className={({ isActive }) =>
+                    isActive
+                      ? "active nav-link fw-bold px-3"
+                      : "nav-link text-white px-3"
+                  }
+                >
+                  <div className="me-2">
+                    <FaShoppingCart />
                   </div>
                   My Cart
-                  <div className="sb-sidenav-collapse-arrow">
-                    <i className="fas fa-angle-down"></i>
-                  </div>
-                </Link>
+                </NavLink>
               </div>
             </div>
             <div className="sb-sidenav-footer">
@@ -110,56 +122,7 @@ const CustomerDashboard = () => {
         <div id="layoutSidenav_content">
           <main>
             <div className="container-fluid px-4">
-              <h1 className="mt-4">Dashboard</h1>
-              <ol className="breadcrumb mb-4">
-                <li className="breadcrumb-item active">Dashboard</li>
-              </ol>
-              <div className="row">
-                <div className="col-xl-3 col-md-6">
-                  <div className="card bg-primary text-white mb-4">
-                    <div className="card-body">Total Order</div>
-                    <div className="card-footer d-flex align-items-center justify-content-between">
-                      <p>{cart?.length}</p>
-                      <div className="small text-white">
-                        <i className="fas fa-angle-right"></i>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="col-xl-3 col-md-6">
-                  <div className="card bg-warning text-white mb-4">
-                    <div className="card-body">Warning Card</div>
-                    <div className="card-footer d-flex align-items-center justify-content-between">
-                      <p>{cart?.length}</p>
-                      <div className="small text-white">
-                        <i className="fas fa-angle-right"></i>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="col-xl-3 col-md-6">
-                  <div className="card bg-success text-white mb-4">
-                    <div className="card-body">Success Card</div>
-                    <div className="card-footer d-flex align-items-center justify-content-between">
-                      <p>{cart?.length}</p>
-                      <div className="small text-white">
-                        <i className="fas fa-angle-right"></i>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="col-xl-3 col-md-6">
-                  <div className="card bg-danger text-white mb-4">
-                    <div className="card-body">Danger Card</div>
-                    <div className="card-footer d-flex align-items-center justify-content-between">
-                      <p>{cart?.length}</p>
-                      <div className="small text-white">
-                        <i className="fas fa-angle-right"></i>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              {/* <h1 className="mt-4">Dashboard</h1> */}
               <div className="row">
                 <Outlet />
               </div>

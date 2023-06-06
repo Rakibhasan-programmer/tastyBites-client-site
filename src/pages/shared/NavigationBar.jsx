@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import { Badge, Button, Container, Nav, Navbar } from "react-bootstrap";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
@@ -106,7 +106,11 @@ const NavigationBar = () => {
                   <img
                     className="rounded-circle me-2"
                     src={user?.photoURL}
-                    style={{ height: "2.3rem" }}
+                    style={{
+                      height: "2.4rem",
+                      width: "2.4rem",
+                      objectFit: "cover",
+                    }}
                     alt=""
                   />
                 ) : (

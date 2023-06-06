@@ -5,6 +5,7 @@ import { Button, Form } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import { FaGithub, FaGoogle } from "react-icons/fa";
 import { AuthContext } from "../../providers/AuthProvider";
+import swal from "sweetalert";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -19,10 +20,32 @@ const Register = () => {
     createUser(data.email, data.password)
       .then((result) => {
         // updating in ui
-        result.user.displayName = data.name;
+        result.user.displayName = data?.name;
+        result.user.photoURL = data?.photoURL;
         // updating user name
-        updateUser(data.name)
-          .then(() => {})
+        updateUser(data.name, data?.photoURL)
+          .then(() => {
+            const savedUser = { name: data?.name, email: data?.email };
+            fetch("http://localhost:5000/users", {
+              method: "POST",
+              headers: {
+                "content-type": "application/json",
+              },
+              body: JSON.stringify(savedUser),
+            })
+              .then(res => res.json())
+              .then((data) => {
+                if (data.insertedId) {
+                  // login success alert
+                  swal({
+                    title: "Good job!",
+                    text: "Registration Successfull!",
+                    icon: "success",
+                    button: "Ok",
+                  });
+                }
+              });
+          })
           .catch((err) => console.log(err));
         // navigate to home
         navigate("/");
@@ -52,6 +75,20 @@ const Register = () => {
                     {errors.name && (
                       <span className="text-danger">
                         Name field is required
+                      </span>
+                    )}
+                  </Form.Group>
+                  <Form.Group className="mb-3" controlId="formBasicEmail">
+                    <Form.Label>PhotoURL</Form.Label>
+                    <Form.Control
+                      style={{ padding: "0.7rem" }}
+                      type="text"
+                      placeholder="Enter your photo url"
+                      {...register("photoURL", { required: true })}
+                    />
+                    {errors.photoURL && (
+                      <span className="text-danger">
+                        Photo URL field is required
                       </span>
                     )}
                   </Form.Group>

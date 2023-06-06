@@ -22,9 +22,12 @@ const AuthProvider = ({ children }) => {
     return createUserWithEmailAndPassword(auth, email, password);
   };
   // update user
-  const updateUser = (name) => {
+  const updateUser = (name, photoURL) => {
     setLoading(true);
-    return updateProfile(auth.currentUser, { displayName: name });
+    return updateProfile(auth.currentUser, {
+      displayName: name,
+      photoURL: photoURL,
+    });
   };
   // sign in user
   const userLogin = (email, password) => {

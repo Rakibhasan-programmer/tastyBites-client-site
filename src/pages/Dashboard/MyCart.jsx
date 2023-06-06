@@ -1,12 +1,14 @@
 import React from "react";
 import useCart from "../../hooks/useCart";
 import { Button, Table } from "react-bootstrap";
+import { FaTrash } from "react-icons/fa";
 
 const MyCart = () => {
   const [cart, refetch] = useCart();
+  // total sum
+  const total = cart.reduce((sum, item) => item.price + sum, 0);
   // handle delete
   const handleDelete = (id) => {
-    console.log(id);
     swal({
       title: "Are you sure",
       icon: "warning",
@@ -27,7 +29,41 @@ const MyCart = () => {
     });
   };
   return (
-    <div>
+    <div className="py-5">
+      <div className="row">
+        <div className="col-xl-3 col-md-6">
+          <div className="card bg-dark text-white mb-4">
+            <div className="card-body">
+              <h4>Total Order</h4>
+            </div>
+            <div className="card-footer d-flex align-items-center justify-content-between">
+              <p>{cart?.length}</p>
+              <div className="small text-white">
+                <i className="fas fa-angle-right"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="col-xl-3 col-md-6">
+          <div className="card bg-dark text-white mb-4">
+            <div className="card-body">
+              <h4>Total Amount</h4>
+            </div>
+            <div className="card-footer d-flex align-items-center justify-content-between">
+              <p>{total}</p>
+              <div className="small text-white">
+                <i className="fas fa-angle-right"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {/* payment */}
+      <div>
+        <Button className="float-end px-4 mb-2" variant="dark">
+          Pay
+        </Button>
+      </div>
       <Table striped bordered hover size="sm" className="mt-3">
         <thead>
           <tr>
@@ -48,7 +84,9 @@ const MyCart = () => {
               <td>{item.name}</td>
               <td>{item.price}</td>
               <td>
-                <Button onClick={() => handleDelete(item._id)}>Delete</Button>
+                <Button variant="danger" onClick={() => handleDelete(item._id)}>
+                  <FaTrash />
+                </Button>
               </td>
             </tr>
           ))}

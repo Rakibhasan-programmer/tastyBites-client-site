@@ -1,6 +1,9 @@
 ul.thumbs.animated {
   text-align: center;
 }
+.react-tabs__tab-list {
+  text-align: center;
+}
 @media only screen and (min-width: 992px) {
   .slider {
     height: 100vh;
