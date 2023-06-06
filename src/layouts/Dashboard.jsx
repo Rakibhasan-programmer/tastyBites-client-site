@@ -11,6 +11,7 @@ import {
 } from "react-icons/fa";
 import { AuthContext } from "../providers/AuthProvider";
 import useCart from "../hooks/useCart";
+import useAdmin from "../hooks/useAdmin";
 
 const Dashboard = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -21,7 +22,8 @@ const Dashboard = () => {
     logOut().then(() => {});
   };
   // admin -
-  const isAdmin = false;
+  // const isAdmin = false;
+  const [isAdmin] = useAdmin();
   return (
     <div>
       <nav className="sb-topnav navbar navbar-expand navbar-dark bg-dark">

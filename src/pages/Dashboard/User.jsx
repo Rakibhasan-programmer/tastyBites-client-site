@@ -3,11 +3,13 @@ import React from "react";
 import { Button, Table } from "react-bootstrap";
 import { FaTrash, FaUsers } from "react-icons/fa";
 import swal from "sweetalert";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const User = () => {
+  const [axiosSecure] = useAxiosSecure();
   const { data: users = [], refetch } = useQuery(["users"], async () => {
-    const res = await fetch("http://localhost:5000/users");
-    return res.json();
+    const res = await axiosSecure.get("/users");
+    return res.data;
   });
 
   // delete user
