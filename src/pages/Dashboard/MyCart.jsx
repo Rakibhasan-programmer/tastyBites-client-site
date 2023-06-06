@@ -23,6 +23,13 @@ const MyCart = () => {
           .then((data) => {
             if (data.deletedCount > 0) {
               refetch();
+              // alert
+              swal({
+                title: "Good job!",
+                text: "Items deleted successfully",
+                icon: "success",
+                button: "Ok",
+              });
             }
           });
       }
@@ -59,12 +66,12 @@ const MyCart = () => {
         </div>
       </div>
       {/* payment */}
-      <div>
-        <Button className="float-end px-4 mb-2" variant="dark">
+      <div className="mb-2 d-flex justify-content-end">
+        <Button className="px-4" variant="dark">
           Pay
         </Button>
       </div>
-      <Table striped bordered hover size="sm" className="mt-3">
+      <Table striped bordered responsive hover size="lg" className="mt-3">
         <thead>
           <tr>
             <th>#</th>
@@ -76,7 +83,7 @@ const MyCart = () => {
         </thead>
         <tbody>
           {cart.map((item, index) => (
-            <tr>
+            <tr key={index}>
               <td>{index + 1}</td>
               <td>
                 <img style={{ height: "2rem" }} src={item.image} alt="" />
