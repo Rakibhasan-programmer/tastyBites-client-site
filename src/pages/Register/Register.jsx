@@ -3,9 +3,9 @@ import { useForm } from "react-hook-form";
 import signUpImg from "../../assets/others/authentication1.png";
 import { Button, Form } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
-import { FaGithub, FaGoogle } from "react-icons/fa";
 import { AuthContext } from "../../providers/AuthProvider";
 import swal from "sweetalert";
+import SocialLogin from "../shared/SocialLogin";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -33,7 +33,7 @@ const Register = () => {
               },
               body: JSON.stringify(savedUser),
             })
-              .then(res => res.json())
+              .then((res) => res.json())
               .then((data) => {
                 if (data.insertedId) {
                   // login success alert
@@ -142,12 +142,7 @@ const Register = () => {
                   </Link>
                   <p className="pt-2">or sign in with</p>
                   <div>
-                    <Link className="pe-3 fs-4">
-                      <FaGoogle />
-                    </Link>
-                    <Link className="fs-4">
-                      <FaGithub />
-                    </Link>
+                    <SocialLogin />
                   </div>
                 </div>
               </div>

@@ -7,11 +7,10 @@ import {
   LoadCanvasTemplate,
   validateCaptcha,
 } from "react-simple-captcha";
-import { FaGithub, FaGoogle } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../../providers/AuthProvider";
-import { GoogleAuthProvider } from "firebase/auth";
+import SocialLogin from "../shared/SocialLogin";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -19,7 +18,7 @@ const Login = () => {
   // redirect location
   const redirectLocation = location?.state?.from?.pathname || "/";
   const [disable, setDisable] = useState(true);
-  const { userLogin, googleSignIn } = useContext(AuthContext);
+  const { userLogin } = useContext(AuthContext);
   const {
     register,
     handleSubmit,
@@ -44,25 +43,6 @@ const Login = () => {
       .catch((err) => console.log(err));
     // reseting form values
     e.target.reset();
-  };
-
-  // google sign in
-  const provider = new GoogleAuthProvider();
-  const handleGoogleSignIn = () => {
-    googleSignIn(provider)
-      .then((res) => {
-        const goggleUser = res.user;
-        // login success alert
-        swal({
-          title: "Good job!",
-          text: "Login Successfull!",
-          icon: "success",
-          button: "Ok",
-        });
-        // navigate to home
-        navigate(redirectLocation, { replace: true });
-      })
-      .catch((err) => console.log(err));
   };
 
   // recaptcha
@@ -150,12 +130,7 @@ const Login = () => {
                 </Link>
                 <p className="pt-2">or sign in with</p>
                 <div>
-                  <Link className="pe-3 fs-4" onClick={handleGoogleSignIn}>
-                    <FaGoogle />
-                  </Link>
-                  <Link className="fs-4">
-                    <FaGithub />
-                  </Link>
+                  <SocialLogin />
                 </div>
               </div>
             </div>
