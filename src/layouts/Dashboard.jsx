@@ -113,7 +113,7 @@ const Dashboard = () => {
                       Admin Home
                     </NavLink>
                     <NavLink
-                      to={"/dashboard"}
+                      to={"/dashboard/addItem"}
                       className={({ isActive }) =>
                         isActive
                           ? "active nav-link fw-bold px-3"
