@@ -2,9 +2,11 @@ import React from "react";
 import SectionTitle from "../../Components/SectionTitle";
 import { Button, Form } from "react-bootstrap";
 import { useForm } from "react-hook-form";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const img_hosting_token = "40d978a01cf2746f99f6f7855fe4dc8c";
 const AddItem = () => {
+  const [axiosSecure] = useAxiosSecure();
   const {
     register,
     handleSubmit,
@@ -32,7 +34,17 @@ const AddItem = () => {
             recipe: data.recipe,
             image: imageUrl,
           };
-          console.log(newItem);
+          axiosSecure.post("/menu", newItem).then((newData) => {
+            if (newData.data.insertedId) {
+              // login success alert
+              swal({
+                title: "Good job!",
+                text: "New Item Added Successfully!",
+                icon: "success",
+                button: "Ok",
+              });
+            }
+          });
         }
       });
 
