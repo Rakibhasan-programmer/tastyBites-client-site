@@ -1,7 +1,13 @@
 import React, { useContext } from "react";
-import { Link, NavLink, Outlet, useLocation } from "react-router-dom";
 import {
-    FaBook,
+  Link,
+  NavLink,
+  Outlet,
+  useLocation,
+  useNavigate,
+} from "react-router-dom";
+import {
+  FaBook,
   FaCalendarAlt,
   FaHome,
   FaShoppingCart,
@@ -17,9 +23,12 @@ const Dashboard = () => {
   const { user, logOut } = useContext(AuthContext);
   const { cart, refetch } = useCart();
   const location = useLocation();
+  const navigate = useNavigate();
   // logout
   const handleLogOut = () => {
-    logOut().then(() => {});
+    logOut().then(() => {
+      navigate("/", { replace: true });
+    });
   };
   // admin -
   // const isAdmin = false;
