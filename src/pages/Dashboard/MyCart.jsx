@@ -2,6 +2,7 @@ import React from "react";
 import useCart from "../../hooks/useCart";
 import { Button, Table } from "react-bootstrap";
 import { FaTrash } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const MyCart = () => {
   const [cart, refetch] = useCart();
@@ -67,9 +68,11 @@ const MyCart = () => {
       </div>
       {/* payment */}
       <div className="mb-2 d-flex justify-content-end">
-        <Button className="px-4" variant="dark">
-          Pay
-        </Button>
+        <Link to={"/dashboard/payment"}>
+          <Button className="px-4" variant="dark">
+            Pay
+          </Button>
+        </Link>
       </div>
       <Table striped bordered responsive hover size="lg" className="mt-3">
         <thead>

@@ -216,7 +216,7 @@ const Dashboard = () => {
                       Reservation
                     </NavLink>
                     <NavLink
-                      to={"/dashboard/payment"}
+                      to={"/dashboard/paymenthistory"}
                       className={({ isActive }) =>
                         isActive
                           ? "active nav-link fw-bold px-3"

@@ -2,7 +2,7 @@ import React from "react";
 import SectionTitle from "../../Components/SectionTitle";
 import useMenu from "../../hooks/useMenu";
 import { Button, Table } from "react-bootstrap";
-import { FaTrash } from "react-icons/fa";
+import { FaCloudUploadAlt, FaTrash } from "react-icons/fa";
 import swal from "sweetalert";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 
@@ -63,7 +63,7 @@ const ManageItem = () => {
               <td>${item.price}</td>
               <td>
                 <Button variant="primary">
-                  <FaTrash />
+                  <FaCloudUploadAlt />
                 </Button>
               </td>
               <td>
