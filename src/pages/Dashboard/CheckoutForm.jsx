@@ -5,8 +5,9 @@ import { useState } from "react";
 import { Button } from "react-bootstrap";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import useAuth from "../../hooks/useAuth";
+import swal from "sweetalert";
 
-const CheckoutForm = ({ price }) => {
+const CheckoutForm = ({ price, cart }) => {
   const [cardError, setCardError] = useState("");
   const [clientSecret, setClientSecret] = useState("");
   const [processing, setProcessing] = useState(false);
@@ -17,9 +18,11 @@ const CheckoutForm = ({ price }) => {
   const elements = useElements();
 
   useEffect(() => {
-    axiosSecure.post("/create-payment-intent", { price }).then((res) => {
-      setClientSecret(res.data.clientSecret);
-    });
+    if (price > 0) {
+      axiosSecure.post("/create-payment-intent", { price }).then((res) => {
+        setClientSecret(res.data.clientSecret);
+      });
+    }
   }, [price]);
 
   const handleSubmit = async (event) => {
@@ -64,6 +67,29 @@ const CheckoutForm = ({ price }) => {
 
     if (paymentIntent.status === "succeeded") {
       setTransactionId(paymentIntent.id);
+      // save payment info to server
+      const payment = {
+        email: user?.email,
+        transactionId: paymentIntent.id,
+        price,
+        date: new Date(),
+        status: "service pending",
+        quantity: cart?.length,
+        cartItems: cart.map((item) => item._id),
+        menuItems: cart.map((item) => item.menuItemId),
+        itemName: cart.map((item) => item.name),
+      };
+      axiosSecure.post("/payments", payment).then((res) => {
+        if (res.data.result.insertedId) {
+          // alert
+          swal({
+            title: "Good job!",
+            text: "Payment info added",
+            icon: "success",
+            button: "Ok",
+          });
+        }
+      });
     }
   };
 
@@ -72,7 +98,7 @@ const CheckoutForm = ({ price }) => {
       <form className="w-50 mx-auto" onSubmit={handleSubmit}>
         {cardError && <p className="text-danger">{cardError?.message}</p>}
         {transactionId && (
-          <p style={{color: "green"}}>{"Transaction successfull"}</p>
+          <p style={{ color: "green" }}>{"Transaction successfull"}</p>
         )}
         <CardElement
           options={{

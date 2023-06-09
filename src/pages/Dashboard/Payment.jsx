@@ -17,7 +17,7 @@ const Payment = () => {
     <div className="py-3">
       <SectionTitle heading={"PAYMENT"} subHeading={"Please provide"} />
       <Elements stripe={stripePromise}>
-        <CheckoutForm price={price} />
+        <CheckoutForm cart={cart} price={price} />
       </Elements>
     </div>
   );
